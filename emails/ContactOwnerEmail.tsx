@@ -1,11 +1,14 @@
-import { Button } from '@react-email/button';
-import { Container } from '@react-email/container';
-import { Head } from '@react-email/head';
-import { Html } from '@react-email/html';
-import { Img } from '@react-email/img';
-import { Preview } from '@react-email/preview';
-import { Section } from '@react-email/section';
-import { Text } from '@react-email/text';
+import * as React from 'react';
+import { 
+  Html, 
+  Head, 
+  Preview, 
+  Container, 
+  Section, 
+  Text, 
+  Button, 
+  Img 
+} from '@react-email/components';
 
 interface ContactOwnerEmailProps {
   company: string;
@@ -36,7 +39,7 @@ export function ContactOwnerEmail({ company, name, email, phone, message }: Cont
             Nieuwe offerte aanvraag
           </Text>
 
-          <Text style={{ fontSize: '16px', color: '#374151' }}>
+          <Text style={{ fontSize: '16px', color: '#374151', lineHeight: '1.6' }}>
             <strong>Bedrijf:</strong> {company}<br />
             <strong>Contactpersoon:</strong> {name}<br />
             <strong>E-mail:</strong> {email}<br />
@@ -55,10 +58,6 @@ export function ContactOwnerEmail({ company, name, email, phone, message }: Cont
             Direct antwoorden
           </Button>
         </Section>
-
-        <Text style={{ textAlign: 'center', color: '#6b7280', fontSize: '12px', marginTop: '20px' }}>
-          Recy-Kab BVBA • Maastrichtersteenweg 523 bus 1, 3700 Tongeren
-        </Text>
       </Container>
     </Html>
   );

@@ -1,11 +1,14 @@
-import { Button } from '@react-email/button';
-import { Container } from '@react-email/container';
-import { Head } from '@react-email/head';
-import { Html } from '@react-email/html';
-import { Img } from '@react-email/img';
-import { Preview } from '@react-email/preview';
-import { Section } from '@react-email/section';
-import { Text } from '@react-email/text';
+import * as React from 'react';
+import { 
+  Html, 
+  Head, 
+  Preview, 
+  Container, 
+  Section, 
+  Text, 
+  Button, 
+  Img 
+} from '@react-email/components';
 
 interface ContactConfirmationEmailProps {
   name: string;
@@ -51,10 +54,6 @@ export function ContactConfirmationEmail({ name }: ContactConfirmationEmailProps
             <strong>Het Recy-Kab team</strong>
           </Text>
         </Section>
-
-        <Text style={{ textAlign: 'center', color: '#9ca3af', fontSize: '12px', marginTop: '20px' }}>
-          Recy-Kab BVBA • Maastrichtersteenweg 523, 3700 Tongeren • België
-        </Text>
       </Container>
     </Html>
   );

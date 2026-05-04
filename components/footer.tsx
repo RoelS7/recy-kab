@@ -36,6 +36,7 @@ export function Footer() {
               width={160}
               height={53}
               className="h-12 w-auto mb-4 brightness-0 invert"
+              priority
             />
             <p className="text-background/70 text-sm leading-relaxed mb-4">
               Specialist in het milieuvriendelijk recyclen van kabels,

@@ -16,7 +16,7 @@ export function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
             <Leaf className="h-4 w-4" />
-            <span>Duurzame kabelrecycling sinds 1985</span>
+            <span>Duurzame kabelrecycling sinds 2015</span>
           </div>
 
           {/* Headline */}
@@ -27,7 +27,7 @@ export function Hero() {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed">
-            Recy-Kab recycleert uw kabel- en koperafval tot zuiver koper en kunststoffen. 
+            Recy-Kab recycleert uw kabel- en koperoverschot tot zuiver koper en kunststoffen. 
             Met ons milieuvriendelijk productieproces scheiden wij kunststoffen volledig van het koper.
           </p>
 

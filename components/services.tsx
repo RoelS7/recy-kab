@@ -5,7 +5,7 @@ const services = [
   {
     icon: Cable,
     title: "Kabelrecycling",
-    description: "Professionele verwerking van alle soorten kabelafval tot zuivere grondstoffen. Van dunne data-kabels tot zware energiekabels.",
+    description: "Professionele verwerking van alle soorten kabeloverschot tot zuivere grondstoffen. Van dunne data-kabels tot zware energiekabels.",
   },
   {
     icon: CircleDot,
@@ -15,7 +15,7 @@ const services = [
   {
     icon: Layers,
     title: "Aluminium Recycling",
-    description: "Duurzame verwerking van aluminium afval. Wij sorteren en verwerken aluminium tot herbruikbare grondstoffen.",
+    description: "Duurzame verwerking van aluminiumoverschot. Wij sorteren en verwerken aluminium tot herbruikbare grondstoffen.",
   },
   {
     icon: Cpu,
@@ -25,12 +25,12 @@ const services = [
   {
     icon: Zap,
     title: "Kunststof Scheiding",
-    description: "Geavanceerde scheiding van PVC en andere kunststoffen. 100% scheiding van kunststof en metaal.",
+    description: "Geavanceerde scheiding van verschillende kunststoffen. 100% scheiding van kunststof en metaal.",
   },
   {
     icon: Package,
     title: "Granulaat Productie",
-    description: "Productie van hoogwaardig koper- en PVC-granulaat (Ø 1-10mm) voor hergebruik in nieuwe producten.",
+    description: "Productie van hoogwaardig koper- en kunstofgranulaat (Ø 1-10mm) voor hergebruik in nieuwe producten.",
   },
 ]
 
@@ -45,7 +45,7 @@ export function Services() {
             Gespecialiseerd in diverse recyclingstromen
           </h2>
           <p className="text-lg text-muted-foreground">
-            Van kabelafval tot zuivere grondstoffen. Wij bieden complete recyclingoplossingen 
+            Van kabeloverschot tot zuivere grondstoffen. Wij bieden complete recyclingoplossingen 
             voor koperhoudende materialen, aluminium en inox.
           </p>
         </div>

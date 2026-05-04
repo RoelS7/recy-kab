@@ -17,13 +17,13 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Adres",
-    value: "Industrieweg 25, 9000 Gent, België",
+    value: "Maastrichtersteenweg 523 bus 1, 3700 Tongeren, België",
   },
   {
     icon: Phone,
     label: "Telefoon",
-    value: "+32 9 123 45 67",
-    href: "tel:+3291234567",
+    value: "+32 472 11 29 36",
+    href: "tel:0032472112936",
   },
   {
     icon: Mail,
@@ -34,7 +34,7 @@ const contactInfo = [
   {
     icon: Clock,
     label: "Openingsuren",
-    value: "Ma - Vr: 08:00 - 17:00",
+    value: "Ma - Vr: 09:00 - 17:00",
   },
 ]
 
@@ -207,7 +207,7 @@ export function Contact() {
             <Card className="overflow-hidden">
               <div className="aspect-video w-full">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.425447044665!2d3.7174!3d51.0543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDAzJzE1LjUiTiAzwrA0MycwMi42IkU!5e0!3m2!1snl!2sbe!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10088.448431454883!2d5.5248466!3d50.7920309!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x14e4b977a62edaac!2sRecy-Kab!5e0!3m2!1sen!2sbe!4v1567514358604!5m2!1sen!2sbe"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

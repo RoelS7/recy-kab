@@ -37,10 +37,10 @@ export function CopperCalculator() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm font-medium text-primary uppercase tracking-wider">Kopercalculator</span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4 mb-6 text-balance">
-            Bereken de waarde van uw koperafval
+            Bereken de waarde van uw koperkabels
           </h2>
           <p className="text-lg text-muted-foreground">
-            Ontdek direct hoeveel uw kabelafval waard is. Vul de hoeveelheid in en 
+            Ontdek direct hoeveel uw kabeloverschot waard is. Vul de hoeveelheid in en 
             krijg een indicatieve schatting van de opbrengst.
           </p>
         </div>
@@ -55,7 +55,7 @@ export function CopperCalculator() {
                 <div>
                   <CardTitle className="text-2xl">Interactieve Kopercalculator</CardTitle>
                   <CardDescription>
-                    Voer de hoeveelheid kabelafval in om een schatting te krijgen
+                    Voer de hoeveelheid kabeloverschot in om een schatting te krijgen
                   </CardDescription>
                 </div>
               </div>
@@ -64,7 +64,7 @@ export function CopperCalculator() {
               {/* Input Section */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="amount" className="text-base">Hoeveelheid kabelafval</Label>
+                  <Label htmlFor="amount" className="text-base">Hoeveelheid kabeloverschot</Label>
                   <Input
                     id="amount"
                     type="number"

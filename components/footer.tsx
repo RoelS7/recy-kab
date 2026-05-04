@@ -38,7 +38,7 @@ export function Footer() {
               className="h-12 w-auto mb-4 brightness-0 invert"
             />
             <p className="text-background/70 text-sm leading-relaxed mb-4">
-              Specialist in het milieuvriendelijk recyclen van kabelafval, 
+              Specialist in het milieuvriendelijk recyclen van kabels, 
               koperhoudende elementen, inox en aluminium.
             </p>
             <div className="flex items-center gap-2 text-sm text-primary">

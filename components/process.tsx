@@ -5,7 +5,7 @@ const steps = [
     icon: Truck,
     number: "01",
     title: "Levering & Opslag",
-    description: "U levert uw kabelafval aan bij onze locatie of wij zorgen voor ophaling. Het materiaal wordt veilig opgeslagen voor verwerking.",
+    description: "U levert uw kabeloverschot aan bij onze locatie of wij zorgen voor ophaling. Het materiaal wordt veilig opgeslagen voor verwerking.",
   },
   {
     icon: Search,
@@ -17,7 +17,7 @@ const steps = [
     icon: Cog,
     number: "03",
     title: "Machinale Verwerking",
-    description: "De gesorteerde kabels worden verwerkt door onze gespecialiseerde machines tot PVC- en kopergranulaat (Ø 1-10mm).",
+    description: "De gesorteerde kabels worden verwerkt door onze gespecialiseerde machines tot kunstof- en kopergranulaat (Ø 1-10mm).",
   },
   {
     icon: PackageCheck,
@@ -35,7 +35,7 @@ export function Process() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm font-medium text-primary uppercase tracking-wider">Onze Werkwijze</span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4 mb-6 text-balance">
-            Van afval naar grondstof in 4 stappen
+            Van overschot naar grondstof in 4 stappen
           </h2>
           <p className="text-lg text-muted-foreground">
             Ons zelf ontwikkeld en milieuvriendelijk productieproces garandeert een volledige 

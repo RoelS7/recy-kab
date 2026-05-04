@@ -31,7 +31,7 @@ export function Footer() {
           {/* Logo & Description */}
           <div className="lg:col-span-1">
             <Image
-              src="/images/logo.png"
+              src="/public/images/logo.png"
               alt="Recy-Kab Recycling"
               width={160}
               height={53}

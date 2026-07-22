@@ -133,6 +133,14 @@ type Dictionary = {
     madeWith: string
     privacy: string
     terms: string
+    cookies: string
+  }
+  cookieConsent: {
+    title: string
+    description: string
+    accept: string
+    decline: string
+    policyLink: string
   }
   bedankt: {
     title: string
@@ -335,6 +343,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
       madeWith: "Made with ❤️ by",
       privacy: "Privacybeleid",
       terms: "Algemene voorwaarden",
+      cookies: "Cookiebeleid",
+    },
+    cookieConsent: {
+      title: "Wij respecteren uw privacy",
+      description:
+        "Wij gebruiken cookies om uw ervaring te verbeteren, websiteverkeer te analyseren en onze diensten te optimaliseren. Door op \u201cAccepteren\u201d te klikken, stemt u in met het gebruik van cookies.",
+      accept: "Accepteren",
+      decline: "Weigeren",
+      policyLink: "Meer info in ons cookiebeleid",
     },
     bedankt: {
       title: "Bedankt voor uw aanvraag!",
@@ -535,6 +552,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
       madeWith: "Made with ❤️ by",
       privacy: "Politique de confidentialité",
       terms: "Conditions générales",
+      cookies: "Politique en matière de cookies",
+    },
+    cookieConsent: {
+      title: "Nous respectons votre vie privée",
+      description:
+        "Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic du site et optimiser nos services. En cliquant sur \u00ab Accepter \u00bb, vous consentez \u00e0 l'utilisation de cookies.",
+      accept: "Accepter",
+      decline: "Refuser",
+      policyLink: "Plus d'infos dans notre politique en matière de cookies",
     },
     bedankt: {
       title: "Merci pour votre demande !",

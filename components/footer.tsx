@@ -114,6 +114,12 @@ export function Footer() {
               <Link href="#" className="text-sm text-background/60 hover:text-primary transition-colors">
                 {t.footer.terms}
               </Link>
+              <a
+                href="/cookiebeleid"
+                className="text-sm text-background/60 hover:text-primary transition-colors"
+              >
+                {t.footer.cookies}
+              </a>
             </div>
           </div>
         </div>

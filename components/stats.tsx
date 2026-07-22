@@ -2,39 +2,24 @@
 
 import { useEffect, useState, useRef } from "react"
 import { Recycle, Leaf, Factory, TrendingUp } from "lucide-react"
+import { useLanguage } from "@/lib/i18n/context"
 
-const stats = [
-  {
-    icon: Recycle,
-    value: 12500,
-    suffix: "+",
-    label: "Ton materiaal gerecycled",
-    description: "Sinds onze oprichting",
-  },
-  {
-    icon: Leaf,
-    value: 8200,
-    suffix: "",
-    label: "Ton CO₂ bespaard",
-    description: "Door circulaire aanpak",
-  },
-  {
-    icon: Factory,
-    value: 35,
-    suffix: "+",
-    label: "Jaren ervaring",
-    description: "In kabelrecycling",
-  },
-  {
-    icon: TrendingUp,
-    value: 99,
-    suffix: "%",
-    label: "Materiaal hergebruikt",
-    description: "Minimale reststroom",
-  },
+const statMeta = [
+  { icon: Recycle, value: 12500, suffix: "+" },
+  { icon: Leaf, value: 8200, suffix: "" },
+  { icon: Factory, value: 35, suffix: "+" },
+  { icon: TrendingUp, value: 99, suffix: "%" },
 ]
 
-function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
+function AnimatedCounter({
+  value,
+  suffix,
+  intlLocale,
+}: {
+  value: number
+  suffix: string
+  intlLocale: string
+}) {
   const [count, setCount] = useState(0)
   const [hasAnimated, setHasAnimated] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -72,13 +57,15 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 
   return (
     <div ref={ref} className="text-4xl md:text-5xl font-bold text-foreground">
-      {count.toLocaleString("nl-BE")}
+      {count.toLocaleString(intlLocale)}
       {suffix}
     </div>
   )
 }
 
 export function Stats() {
+  const { t, intlLocale } = useLanguage()
+
   return (
     <section id="milieu-impact" className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
       {/* Background Pattern */}
@@ -94,31 +81,34 @@ export function Stats() {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-sm font-medium uppercase tracking-wider opacity-80">Onze Impact</span>
+          <span className="text-sm font-medium uppercase tracking-wider opacity-80">{t.stats.eyebrow}</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 text-balance">
-            Onze bijdrage aan een duurzame wereld
+            {t.stats.title}
           </h2>
           <p className="text-lg opacity-90">
-            Wij hebben het belang van duurzame ontwikkeling begrepen en zijn bereid hiertoe 
-            bij te dragen in ons vakgebied, geleidelijk en binnen onze mogelijkheden.
+            {t.stats.description}
           </p>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="text-center p-6 rounded-xl bg-primary-foreground/10 backdrop-blur-sm"
-            >
-              <div className="inline-flex p-3 rounded-lg bg-primary-foreground/20 mb-4">
-                <stat.icon className="h-6 w-6" />
+          {statMeta.map((stat, index) => {
+            const Icon = stat.icon
+            const info = t.stats.items[index]
+            return (
+              <div
+                key={info.label}
+                className="text-center p-6 rounded-xl bg-primary-foreground/10 backdrop-blur-sm"
+              >
+                <div className="inline-flex p-3 rounded-lg bg-primary-foreground/20 mb-4">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <AnimatedCounter value={stat.value} suffix={stat.suffix} intlLocale={intlLocale} />
+                <p className="text-lg font-medium mt-2">{info.label}</p>
+                <p className="text-sm opacity-70 mt-1">{info.description}</p>
               </div>
-              <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-              <p className="text-lg font-medium mt-2">{stat.label}</p>
-              <p className="text-sm opacity-70 mt-1">{stat.description}</p>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

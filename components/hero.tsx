@@ -1,8 +1,13 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Recycle, Leaf, Factory } from "lucide-react"
+import { useLanguage } from "@/lib/i18n/context"
 
 export function Hero() {
+  const { t } = useLanguage()
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background Pattern */}
@@ -16,32 +21,31 @@ export function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
             <Leaf className="h-4 w-4" />
-            <span>Duurzame kabelrecycling sinds 2015</span>
+            <span>{t.hero.badge}</span>
           </div>
 
           {/* Headline */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 text-balance">
-            Samen bouwen aan een{" "}
-            <span className="text-primary">circulaire toekomst</span>
+            {t.hero.headlineStart}{" "}
+            <span className="text-primary">{t.hero.headlineHighlight}</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed">
-            Recy-Kab recycleert uw kabel- en koperoverschot tot zuiver koper en kunststoffen. 
-            Met ons milieuvriendelijk productieproces scheiden wij kunststoffen volledig van het koper.
+            {t.hero.subheadline}
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
             <Button size="lg" asChild className="text-base">
               <Link href="#contact">
-                Vraag een offerte aan
+                {t.hero.ctaPrimary}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="text-base">
               <Link href="#diensten">
-                Ontdek onze diensten
+                {t.hero.ctaSecondary}
               </Link>
             </Button>
           </div>
@@ -53,8 +57,8 @@ export function Hero() {
                 <Recycle className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-foreground">100%</p>
-                <p className="text-sm text-muted-foreground">Materialenscheiding</p>
+                <p className="text-2xl font-bold text-foreground">{t.hero.trust.separation}</p>
+                <p className="text-sm text-muted-foreground">{t.hero.trust.separationLabel}</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 rounded-lg bg-card border border-border">
@@ -62,8 +66,8 @@ export function Hero() {
                 <Leaf className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-foreground">Eco</p>
-                <p className="text-sm text-muted-foreground">Milieuvriendelijk proces</p>
+                <p className="text-2xl font-bold text-foreground">{t.hero.trust.eco}</p>
+                <p className="text-sm text-muted-foreground">{t.hero.trust.ecoLabel}</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 rounded-lg bg-card border border-border">
@@ -71,8 +75,8 @@ export function Hero() {
                 <Factory className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-foreground">B2B</p>
-                <p className="text-sm text-muted-foreground">Zakelijke oplossingen</p>
+                <p className="text-2xl font-bold text-foreground">{t.hero.trust.b2b}</p>
+                <p className="text-sm text-muted-foreground">{t.hero.trust.b2bLabel}</p>
               </div>
             </div>
           </div>

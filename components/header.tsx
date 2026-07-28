@@ -50,16 +50,16 @@ export function Header() {
           </nav>
 
           {/* Desktop CTA + Language Switcher */}
-          {/*<div className="hidden lg:flex items-center gap-3">
-            <LanguageSwitcher />
+          <div className="hidden lg:flex items-center gap-3">
+            {/* <LanguageSwitcher /> */}
             <Button asChild>
               <Link href="#contact">{t.header.cta}</Link>
             </Button>
-          </div>*/}
+          </div>
 
           {/* Mobile controls: language switcher stays directly accessible in the sticky header */}
-          {/* <div className="flex items-center gap-2 lg:hidden">
-            <LanguageSwitcher />
+          <div className="flex items-center gap-2 lg:hidden">
+            {/* <LanguageSwitcher /> */}
             <button
               className="p-2 text-foreground"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -69,7 +69,7 @@ export function Header() {
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
-        </div>*/}
+        </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
@@ -86,13 +86,13 @@ export function Header() {
                 </Link>
               ))}
 
-              {/* Language switcher also clearly integrated inside the mobile menu */}
-              <div className="pt-2 mt-1 border-t border-border">
+              {/* Language switcher inside mobile menu (ook uitgecomment) */}
+              {/* <div className="pt-2 mt-1 border-t border-border">
                 <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">
                   {t.header.languageLabel}
                 </p>
                 <LanguageSwitcher fullWidth />
-              </div>
+              </div> */}
 
               <Button asChild className="mt-2">
                 <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>

@@ -1,27 +1,16 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Leaf } from "lucide-react"
+import { useLanguage } from "@/lib/i18n/context"
 
-const footerLinks = {
-  diensten: [
-    { label: "Kabelrecycling", href: "#diensten" },
-    { label: "Koperverwerking", href: "#diensten" },
-    { label: "Aluminium Recycling", href: "#diensten" },
-    { label: "Inox Verwerking", href: "#diensten" },
-  ],
-  bedrijf: [
-    { label: "Over ons", href: "#" },
-    { label: "Werkwijze", href: "#werkwijze" },
-    { label: "Milieu-impact", href: "#milieu-impact" },
-    { label: "Contact", href: "#contact" },
-  ],
-  tools: [
-    { label: "Kopercalculator", href: "#calculator" },
-    { label: "Offerte aanvragen", href: "#contact" },
-  ],
-}
+const dienstenHrefs = ["#diensten", "#diensten", "#diensten", "#diensten"]
+const bedrijfHrefs = ["#", "#werkwijze", "#milieu-impact", "#contact"]
+const toolsHrefs = ["#calculator", "#contact"]
 
 export function Footer() {
+  const { t } = useLanguage()
   const currentYear = new Date().getFullYear()
 
   return (
@@ -31,7 +20,7 @@ export function Footer() {
           {/* Logo & Description */}
           <div className="lg:col-span-1">
             <Image
-              src="/images/logo.png"           // ← Fix: public/ mag niet in src
+              src="/images/logo.png"
               alt="Recy-Kab Recycling"
               width={160}
               height={53}
@@ -39,26 +28,25 @@ export function Footer() {
               priority
             />
             <p className="text-background/70 text-sm leading-relaxed mb-4">
-              Specialist in het milieuvriendelijk recyclen van kabels,
-              koperhoudende elementen, inox en aluminium.
+              {t.footer.description}
             </p>
             <div className="flex items-center gap-2 text-sm text-primary">
               <Leaf className="h-4 w-4" />
-              <span>Duurzaam ondernemen</span>
+              <span>{t.footer.tagline}</span>
             </div>
           </div>
 
           {/* Diensten */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Diensten</h4>
+            <h4 className="font-semibold text-lg mb-4">{t.footer.dienstenTitle}</h4>
             <ul className="space-y-2">
-              {footerLinks.diensten.map((link) => (
-                <li key={link.label}>
+              {t.footer.diensten.map((label, index) => (
+                <li key={label}>
                   <Link
-                    href={link.href}
+                    href={dienstenHrefs[index]}
                     className="text-background/70 hover:text-primary transition-colors text-sm"
                   >
-                    {link.label}
+                    {label}
                   </Link>
                 </li>
               ))}
@@ -67,15 +55,15 @@ export function Footer() {
 
           {/* Bedrijf */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Bedrijf</h4>
+            <h4 className="font-semibold text-lg mb-4">{t.footer.bedrijfTitle}</h4>
             <ul className="space-y-2">
-              {footerLinks.bedrijf.map((link) => (
-                <li key={link.label}>
+              {t.footer.bedrijf.map((label, index) => (
+                <li key={label}>
                   <Link
-                    href={link.href}
+                    href={bedrijfHrefs[index]}
                     className="text-background/70 hover:text-primary transition-colors text-sm"
                   >
-                    {link.label}
+                    {label}
                   </Link>
                 </li>
               ))}
@@ -84,15 +72,15 @@ export function Footer() {
 
           {/* Tools */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Tools</h4>
+            <h4 className="font-semibold text-lg mb-4">{t.footer.toolsTitle}</h4>
             <ul className="space-y-2">
-              {footerLinks.tools.map((link) => (
-                <li key={link.label}>
+              {t.footer.tools.map((label, index) => (
+                <li key={label}>
                   <Link
-                    href={link.href}
+                    href={toolsHrefs[index]}
                     className="text-background/70 hover:text-primary transition-colors text-sm"
                   >
-                    {link.label}
+                    {label}
                   </Link>
                 </li>
               ))}
@@ -104,14 +92,14 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-background/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-sm text-background/60">
-              © {currentYear} Recy-Kab BVBA. Alle rechten voorbehouden.
+              © {currentYear} Recy-Kab BVBA. {t.footer.rights}
             </p>
 
             {/* Made with love by Atelier Smits */}
             <div className="text-sm text-background/60">
-              Made with ❤️ by{' '}
-              <Link 
-                href="https://ateliersmits.be" 
+              {t.footer.madeWith}{' '}
+              <Link
+                href="https://ateliersmits.be"
                 target="_blank"
                 className="hover:text-white transition-colors font-medium"
               >
@@ -121,11 +109,17 @@ export function Footer() {
 
             <div className="flex gap-6">
               <Link href="#" className="text-sm text-background/60 hover:text-primary transition-colors">
-                Privacybeleid
+                {t.footer.privacy}
               </Link>
               <Link href="#" className="text-sm text-background/60 hover:text-primary transition-colors">
-                Algemene voorwaarden
+                {t.footer.terms}
               </Link>
+              <a
+                href="/cookiebeleid"
+                className="text-sm text-background/60 hover:text-primary transition-colors"
+              >
+                {t.footer.cookies}
+              </a>
             </div>
           </div>
         </div>

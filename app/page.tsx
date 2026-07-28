@@ -6,6 +6,7 @@ import { Stats } from "@/components/stats"
 import { CopperCalculator } from "@/components/copper-calculator"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
+import { CookieConsent } from "@/components/cookie-consent"
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
         <Contact />
       </main>
       <Footer />
+      <CookieConsent />
     </>
   )
 }

@@ -5,17 +5,20 @@ import Link from "next/link"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
-const navLinks = [
-  { href: "#diensten", label: "Diensten" },
-  { href: "#werkwijze", label: "Werkwijze" },
-  { href: "#milieu-impact", label: "Milieu-impact" },
-  { href: "#calculator", label: "Kopercalculator" },
-  { href: "#contact", label: "Contact" },
-]
+import { LanguageSwitcher } from "@/components/language-switcher"
+import { useLanguage } from "@/lib/i18n/context"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { t } = useLanguage()
+
+  const navLinks = [
+    { href: "#diensten", label: t.header.nav.diensten },
+    { href: "#werkwijze", label: t.header.nav.werkwijze },
+    { href: "#milieu-impact", label: t.header.nav.milieuImpact },
+    { href: "#calculator", label: t.header.nav.calculator },
+    { href: "#contact", label: t.header.nav.contact },
+  ]
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -46,21 +49,26 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* Desktop CTA + Language Switcher */}
+          <div className="hidden lg:flex items-center gap-3">
+            <LanguageSwitcher />
             <Button asChild>
-              <Link href="#contact">Vraag een offerte aan</Link>
+              <Link href="#contact">{t.header.cta}</Link>
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-foreground"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* Mobile controls: language switcher stays directly accessible in the sticky header */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <LanguageSwitcher />
+            <button
+              className="p-2 text-foreground"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={t.header.toggleMenu}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -77,9 +85,18 @@ export function Header() {
                   {link.label}
                 </Link>
               ))}
+
+              {/* Language switcher also clearly integrated inside the mobile menu */}
+              <div className="pt-2 mt-1 border-t border-border">
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">
+                  {t.header.languageLabel}
+                </p>
+                <LanguageSwitcher fullWidth />
+              </div>
+
               <Button asChild className="mt-2">
                 <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                  Vraag een offerte aan
+                  {t.header.cta}
                 </Link>
               </Button>
             </nav>

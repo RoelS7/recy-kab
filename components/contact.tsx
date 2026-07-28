@@ -8,22 +8,24 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { sendContactForm } from "@/app/actions/send-contact-form"
 import { useRouter } from "next/navigation"
-
-const contactInfo = [
-  { icon: Building2, label: "Bedrijfsnaam", value: "Recy-Kab BVBA" },
-  { icon: MapPin, label: "Adres", value: "Maastrichtersteenweg 523 bus 1, 3700 Tongeren, België" },
-  { icon: Phone, label: "Telefoon", value: "+32 472 11 29 36", href: "tel:0032472112936" },
-  { icon: Mail, label: "E-mail", value: "info@recy-kab.be", href: "mailto:info@recy-kab.be" },
-  { icon: Clock, label: "Openingsuren", value: "Ma - Vr: 09:00 - 17:00" },
-]
+import { useLanguage } from "@/lib/i18n/context"
 
 export function Contact() {
   const router = useRouter()
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     company: "", name: "", email: "", phone: "", message: ""
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState("")
+
+  const contactInfo = [
+    { icon: Building2, label: t.contact.info.companyLabel, value: t.contact.info.companyValue },
+    { icon: MapPin, label: t.contact.info.addressLabel, value: t.contact.info.addressValue },
+    { icon: Phone, label: t.contact.info.phoneLabel, value: "+32 472 11 29 36", href: "tel:0032472112936" },
+    { icon: Mail, label: t.contact.info.emailLabel, value: "info@recy-kab.be", href: "mailto:info@recy-kab.be" },
+    { icon: Clock, label: t.contact.info.hoursLabel, value: t.contact.info.hoursValue },
+  ]
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -39,7 +41,7 @@ export function Contact() {
       await sendContactForm(form)
       router.push("/bedankt")
     } catch (err: any) {
-      setError(err.message || "Er is iets misgegaan. Probeer het later opnieuw.")
+      setError(err.message || t.contact.genericError)
     } finally {
       setIsSubmitting(false)
     }
@@ -49,13 +51,12 @@ export function Contact() {
     <section id="contact" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-sm font-medium text-primary uppercase tracking-wider">Contact</span>
+          <span className="text-sm font-medium text-primary uppercase tracking-wider">{t.contact.eyebrow}</span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4 mb-6 text-balance">
-            Neem contact met ons op
+            {t.contact.title}
           </h2>
           <p className="text-lg text-muted-foreground">
-            Heeft u vragen over onze diensten of wilt u een offerte aanvragen? 
-            Vul het formulier in en wij nemen zo snel mogelijk contact met u op.
+            {t.contact.description}
           </p>
         </div>
 
@@ -63,69 +64,69 @@ export function Contact() {
           {/* Contact Form + Waarom Recy-Kab */}
           <Card className="h-full flex flex-col">
             <CardHeader>
-              <CardTitle className="text-xl">Offerte aanvragen</CardTitle>
+              <CardTitle className="text-xl">{t.contact.formTitle}</CardTitle>
               <CardDescription>
-                Vul onderstaand formulier in en wij nemen zo snel mogelijk contact met u op.
+                {t.contact.formDescription}
               </CardDescription>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="company">Bedrijfsnaam *</Label>
+                    <Label htmlFor="company">{t.contact.companyLabel}</Label>
                     <Input
                       id="company"
                       required
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      placeholder="Uw bedrijfsnaam"
+                      placeholder={t.contact.companyPlaceholder}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="name">Contactpersoon *</Label>
+                    <Label htmlFor="name">{t.contact.nameLabel}</Label>
                     <Input
                       id="name"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Uw naam"
+                      placeholder={t.contact.namePlaceholder}
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email">E-mailadres *</Label>
+                    <Label htmlFor="email">{t.contact.emailLabel}</Label>
                     <Input
                       id="email"
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="email@bedrijf.be"
+                      placeholder={t.contact.emailPlaceholder}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Telefoonnummer</Label>
+                    <Label htmlFor="phone">{t.contact.phoneLabel}</Label>
                     <Input
                       id="phone"
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+32 ..."
+                      placeholder={t.contact.phonePlaceholder}
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Uw bericht *</Label>
+                  <Label htmlFor="message">{t.contact.messageLabel}</Label>
                   <Textarea
                     id="message"
                     required
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Beschrijf uw aanvraag (type materiaal, geschatte hoeveelheid, etc.)"
+                    placeholder={t.contact.messagePlaceholder}
                   />
                 </div>
 
@@ -134,7 +135,7 @@ export function Contact() {
                 )}
 
                 <Button type="submit" className="w-full" disabled={isSubmitting} size="lg">
-                  {isSubmitting ? "Verzenden..." : "Offerte aanvragen"}
+                  {isSubmitting ? t.contact.submitting : t.contact.submit}
                   <Send className="ml-2 h-4 w-4" />
                 </Button>
               </form>
@@ -143,40 +144,18 @@ export function Contact() {
               <div className="mt-auto pt-10 border-t border-border">
                 <h4 className="font-semibold text-lg mb-5 flex items-center gap-2">
                   <CheckCircle className="h-5 w-5 text-primary" />
-                  Waarom kiezen voor Recy-Kab?
+                  {t.contact.whyTitle}
                 </h4>
                 <div className="space-y-5 text-sm">
-                  <div className="flex gap-3">
-                    <div className="text-primary mt-0.5">•</div>
-                    <div>
-                      <p className="font-medium">Snelle offertes</p>
-                      <p className="text-muted-foreground">Binnen 24 uur een prijsvoorstel op maat</p>
+                  {t.contact.reasons.map((reason) => (
+                    <div key={reason.title} className="flex gap-3">
+                      <div className="text-primary mt-0.5">•</div>
+                      <div>
+                        <p className="font-medium">{reason.title}</p>
+                        <p className="text-muted-foreground">{reason.description}</p>
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <div className="text-primary mt-0.5">•</div>
-                    <div>
-                      <p className="font-medium">Volledig gecertificeerd</p>
-                      <p className="text-muted-foreground">VLAREMA &amp; Europese milieunormen</p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <div className="text-primary mt-0.5">•</div>
-                    <div>
-                      <p className="font-medium">Ophalen in heel België</p>
-                      <p className="text-muted-foreground">Ook voor kleinere hoeveelheden</p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <div className="text-primary mt-0.5">•</div>
-                    <div>
-                      <p className="font-medium">Transparante prijzen</p>
-                      <p className="text-muted-foreground">Geen verrassingen achteraf</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </CardContent>
@@ -187,7 +166,7 @@ export function Contact() {
             {/* Contact Details */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-xl">Contactgegevens</CardTitle>
+                <CardTitle className="text-xl">{t.contact.detailsTitle}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {contactInfo.map((item) => (
@@ -221,7 +200,7 @@ export function Contact() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Recy-Kab locatie"
+                  title={t.contact.mapTitle}
                 />
               </div>
             </Card>

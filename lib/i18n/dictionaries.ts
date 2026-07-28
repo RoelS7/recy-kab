@@ -286,7 +286,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       estimatedValue: "Geschatte opbrengst",
       disclaimerTitle: "Belangrijke informatie",
       disclaimer: (price: number) =>
-        `Deze calculator geeft een indicatieve schatting op basis van een gemiddeld kopergehalte van 65% en de huidige marktprijs (€${price}/kg). De werkelijke waarde kan variëren afhankelijk van het type kabel, zuiverheid en marktschommelingen. Neem contact met ons op voor een exacte offerte.`,
+        `Deze calculator geeft een indicatieve schatting op basis van een gemiddeld kopergehalte van 65% en onze gemiddelde marktprijs (€${price}/kg). De werkelijke waarde kan variëren afhankelijk van het type kabel, zuiverheid en marktschommelingen. Neem contact met ons op voor een exacte offerte.`,
       cta: "Vraag een exacte offerte aan",
     },
     contact: {
@@ -495,7 +495,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       estimatedValue: "Rendement estimé",
       disclaimerTitle: "Information importante",
       disclaimer: (price: number) =>
-        `Ce calculateur fournit une estimation indicative basée sur une teneur moyenne en cuivre de 65 % et le prix actuel du marché (${price} €/kg). La valeur réelle peut varier en fonction du type de câble, de la pureté et des fluctuations du marché. Contactez-nous pour obtenir un devis exact.`,
+        `Ce calculateur fournit une estimation indicative basée sur une teneur moyenne en cuivre de 65 % et notre prix moyen du marché (${price} €/kg). La valeur réelle peut varier en fonction du type de câble, de la pureté et des fluctuations du marché. Contactez-nous pour obtenir un devis exact.`,
       cta: "Demandez un devis exact",
     },
     contact: {

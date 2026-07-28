@@ -7,7 +7,7 @@ import { useLanguage } from "@/lib/i18n/context"
 const statMeta = [
   { icon: Recycle, value: 12500, suffix: "+" },
   { icon: Leaf, value: 8200, suffix: "" },
-  { icon: Factory, value: 35, suffix: "+" },
+  { icon: Factory, value: 10, suffix: "+" },
   { icon: TrendingUp, value: 99, suffix: "%" },
 ]
 

@@ -50,15 +50,15 @@ export function Header() {
           </nav>
 
           {/* Desktop CTA + Language Switcher */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/*<div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher />
             <Button asChild>
               <Link href="#contact">{t.header.cta}</Link>
             </Button>
-          </div>
+          </div>*/}
 
           {/* Mobile controls: language switcher stays directly accessible in the sticky header */}
-          <div className="flex items-center gap-2 lg:hidden">
+          {/* <div className="flex items-center gap-2 lg:hidden">
             <LanguageSwitcher />
             <button
               className="p-2 text-foreground"
@@ -69,7 +69,7 @@ export function Header() {
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
-        </div>
+        </div>*/}
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (

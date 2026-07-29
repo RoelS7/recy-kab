@@ -21,14 +21,21 @@ type LanguageContextValue = {
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
+  // Zolang defaultLocale in je dictionaries op 'nl' staat, start hij nu altijd in het Nederlands
   const [locale, setLocaleState] = useState<Locale>(defaultLocale)
 
   // Restore the user's saved language preference on mount
   useEffect(() => {
+    // TIJDELIJK UITGEZET om te voorkomen dat iemand vast komt te zitten in de Franse versie
+    /*
     const stored = window.localStorage.getItem(STORAGE_KEY)
     if (stored && locales.includes(stored as Locale)) {
       setLocaleState(stored as Locale)
     }
+    */
+   
+    // (Optioneel) Wis de oude keuze uit het geheugen om het helemaal schoon te trekken:
+    window.localStorage.removeItem(STORAGE_KEY)
   }, [])
 
   const setLocale = useCallback((next: Locale) => {

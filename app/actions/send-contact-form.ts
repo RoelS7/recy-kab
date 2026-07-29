@@ -24,7 +24,7 @@ export async function sendContactForm(formData: FormData) {
     // 1. Email naar Recy-Kab (jij)
     await resend.emails.send({
       from: 'Recy-Kab Website <info@recy-kab.com>',   // blijf dit gebruiken tot domein geverifieerd is
-      to: 'smitsro7@gmail.com',
+      to: 'info@recy-kab.com',
       subject: `Nieuwe offerte aanvraag - ${company}`,
       react: ContactOwnerEmail({ company, name, email, phone: phone || '', message }),
     })

@@ -23,7 +23,7 @@ export function ContactOwnerEmail({ company, name, email, phone, message }: Cont
   return (
     <Html>
       <Head />
-      <Preview>Nieuwe offerte aanvraag van {company || name}</Preview>
+      <Preview>Nieuw bericht via de site van {company || name}</Preview>
       <Body style={{ backgroundColor: '#f3f4f6', margin: 0, padding: '20px 0', fontFamily: 'Arial, sans-serif' }}>
         <Container style={{ maxWidth: '600px', margin: '0 auto', backgroundColor: '#ffffff', borderRadius: '8px', overflow: 'hidden', border: '1px solid #e5e7eb' }}>
           

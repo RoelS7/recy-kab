@@ -2,6 +2,7 @@ import * as React from 'react';
 import { 
   Html, 
   Head, 
+  Body,
   Preview, 
   Container, 
   Section, 
@@ -22,43 +23,69 @@ export function ContactOwnerEmail({ company, name, email, phone, message }: Cont
   return (
     <Html>
       <Head />
-      <Preview>Nieuwe offerte aanvraag van {company}</Preview>
-      <Container style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
-        <Section style={{ backgroundColor: '#008d00', padding: '20px', borderRadius: '8px 8px 0 0' }}>
-          <Img 
-            src="https://recy-kab.be/images/logo.png" 
-            width="220" 
-            height="80" 
-            alt="Recy-Kab" 
-            style={{ margin: '0 auto', display: 'block' }}
-          />
-        </Section>
-
-        <Section style={{ backgroundColor: '#ffffff', padding: '30px', border: '1px solid #e5e7eb' }}>
-          <Text style={{ fontSize: '24px', fontWeight: 'bold', color: '#008d00', marginBottom: '20px' }}>
-            Nieuwe offerte aanvraag
-          </Text>
-
-          <Text style={{ fontSize: '16px', color: '#374151', lineHeight: '1.6' }}>
-            <strong>Bedrijf:</strong> {company}<br />
-            <strong>Contactpersoon:</strong> {name}<br />
-            <strong>E-mail:</strong> {email}<br />
-            {phone && <><strong>Telefoon:</strong> {phone}<br /></>}
-          </Text>
-
-          <Section style={{ backgroundColor: '#f8fafc', padding: '20px', borderRadius: '6px', margin: '20px 0' }}>
-            <Text style={{ fontWeight: 'bold', color: '#008d00', marginBottom: '10px' }}>Bericht:</Text>
-            <Text style={{ color: '#374151', lineHeight: '1.6' }}>{message}</Text>
+      <Preview>Nieuwe offerte aanvraag van {company || name}</Preview>
+      <Body style={{ backgroundColor: '#f3f4f6', margin: 0, padding: '20px 0', fontFamily: 'Arial, sans-serif' }}>
+        <Container style={{ maxWidth: '600px', margin: '0 auto', backgroundColor: '#ffffff', borderRadius: '8px', overflow: 'hidden', border: '1px solid #e5e7eb' }}>
+          
+          {/* Header met Logo */}
+          <Section style={{ backgroundColor: '#008d00', padding: '20px', textAlign: 'center' }}>
+            <Img 
+              src="https://www.recy-kab.com/images/logo.png" 
+              width="220" 
+              height="80" 
+              alt="Recy-Kab" 
+              style={{ 
+                margin: '0 auto', 
+                display: 'block', 
+                width: '220px', 
+                height: '80px', 
+                border: '0', 
+                outline: 'none', 
+                textDecoration: 'none' 
+              }}
+            />
           </Section>
 
-          <Button 
-            href={`mailto:${email}`}
-            style={{ backgroundColor: '#008d00', color: '#ffffff', padding: '12px 24px', borderRadius: '6px', textDecoration: 'none' }}
-          >
-            Direct antwoorden
-          </Button>
-        </Section>
-      </Container>
+          {/* Inhoud */}
+          <Section style={{ padding: '30px' }}>
+            <Text style={{ fontSize: '22px', fontWeight: 'bold', color: '#008d00', margin: '0 0 20px 0' }}>
+              Nieuwe offerte aanvraag
+            </Text>
+
+            <Text style={{ fontSize: '15px', color: '#374151', lineHeight: '1.8', margin: '0 0 20px 0' }}>
+              <strong>Bedrijf:</strong> {company || 'Niet opgegeven'}<br />
+              <strong>Contactpersoon:</strong> {name}<br />
+              <strong>E-mail:</strong> {email}<br />
+              {phone && <><strong>Telefoon:</strong> {phone}<br /></>}
+            </Text>
+
+            <Section style={{ backgroundColor: '#f8fafc', padding: '20px', borderRadius: '6px', margin: '20px 0', border: '1px solid #e2e8f0' }}>
+              <Text style={{ fontWeight: 'bold', color: '#008d00', margin: '0 0 10px 0' }}>Bericht:</Text>
+              <Text style={{ color: '#374151', lineHeight: '1.6', margin: 0 }}>{message}</Text>
+            </Section>
+
+            <Section style={{ textAlign: 'left', marginTop: '25px' }}>
+              <Button 
+                href={`mailto:${email}`}
+                style={{ 
+                  backgroundColor: '#008d00', 
+                  color: '#ffffff', 
+                  padding: '12px 24px', 
+                  borderRadius: '6px', 
+                  fontSize: '15px', 
+                  fontWeight: 'bold',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  textAlign: 'center'
+                }}
+              >
+                Direct antwoorden
+              </Button>
+            </Section>
+          </Section>
+
+        </Container>
+      </Body>
     </Html>
   );
 }

@@ -23,7 +23,7 @@ export async function sendContactForm(formData: FormData) {
 
     // 1. Email naar Recy-Kab (jij)
     await resend.emails.send({
-      from: 'Recy-Kab Website <noreply@resend.dev>',   // blijf dit gebruiken tot domein geverifieerd is
+      from: 'Recy-Kab Website <info@recy-kab.be>',   // blijf dit gebruiken tot domein geverifieerd is
       to: 'info@recy-kab.be',
       subject: `Nieuwe offerte aanvraag - ${company}`,
       react: ContactOwnerEmail({ company, name, email, phone: phone || '', message }),
@@ -31,7 +31,7 @@ export async function sendContactForm(formData: FormData) {
 
     // 2. Bevestigingsemail naar de klant
     await resend.emails.send({
-      from: 'Recy-Kab <noreply@resend.dev>',
+      from: 'Recy-Kab <info@recy-kab.be>',
       to: email,
       subject: 'Bedankt voor uw aanvraag - Recy-Kab',
       react: ContactConfirmationEmail({ name }),

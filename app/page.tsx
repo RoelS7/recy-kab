@@ -17,7 +17,6 @@ export default function HomePage() {
         <Services />
         <Process />
         <Stats />
-        <CopperCalculator />
         <Contact />
       </main>
       <Footer />

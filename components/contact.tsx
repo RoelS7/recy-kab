@@ -23,7 +23,7 @@ export function Contact() {
     { icon: Building2, label: t.contact.info.companyLabel, value: t.contact.info.companyValue },
     { icon: MapPin, label: t.contact.info.addressLabel, value: t.contact.info.addressValue },
     { icon: Phone, label: t.contact.info.phoneLabel, value: "+32 472 11 29 36", href: "tel:0032472112936" },
-    { icon: Mail, label: t.contact.info.emailLabel, value: "info@recy-kab.be", href: "mailto:info@recy-kab.be" },
+    { icon: Mail, label: t.contact.info.emailLabel, value: "info@recy-kab.com", href: "mailto:info@recy-kab.com" },
     { icon: Clock, label: t.contact.info.hoursLabel, value: t.contact.info.hoursValue },
   ]
 

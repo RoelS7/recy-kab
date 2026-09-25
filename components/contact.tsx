@@ -1,5 +1,6 @@
 "use client"
 import { useState, useRef } from "react"
+import dynamic from "next/dynamic"
 import { MapPin, Phone, Mail, Clock, Send, Building2, CheckCircle } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -9,7 +10,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { sendContactForm } from "@/app/actions/send-contact-form"
 import { useRouter } from "next/navigation"
 import { useLanguage } from "@/lib/i18n/context"
-import Turnstile from "react-turnstile"
+
+const Turnstile = dynamic(() => import("react-turnstile"), { ssr: false })
 
 export function Contact() {
   const router = useRouter()

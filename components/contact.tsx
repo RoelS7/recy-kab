@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { MapPin, Phone, Mail, Clock, Send, Building2, CheckCircle } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -9,10 +9,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { sendContactForm } from "@/app/actions/send-contact-form"
 import { useRouter } from "next/navigation"
 import { useLanguage } from "@/lib/i18n/context"
+import Turnstile from "react-turnstile"
 
 export function Contact() {
   const router = useRouter()
   const { t } = useLanguage()
+  const turnstileRef = useRef<any>(null)
   const [formData, setFormData] = useState({
     company: "", name: "", email: "", phone: "", message: ""
   })
@@ -33,10 +35,18 @@ export function Contact() {
     setError("")
 
     try {
+      const token = turnstileRef.current?.getResponse()
+      if (!token) {
+        setError("Verifieer a.u.b. dat je geen robot bent")
+        setIsSubmitting(false)
+        return
+      }
+
       const form = new FormData()
       Object.entries(formData).forEach(([key, value]) => {
         form.append(key, value)
       })
+      form.append("turnstileToken", token)
 
       await sendContactForm(form)
       router.push("/bedankt")
@@ -127,6 +137,14 @@ export function Contact() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder={t.contact.messagePlaceholder}
+                  />
+                </div>
+
+                <div className="flex justify-center">
+                  <Turnstile
+                    ref={turnstileRef}
+                    sitekey={process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || ""}
+                    theme="light"
                   />
                 </div>
 

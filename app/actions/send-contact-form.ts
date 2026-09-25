@@ -6,16 +6,48 @@ import { ContactConfirmationEmail } from '@/emails/ContactConfirmationEmail'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+async function verifyTurnstileToken(token: string): Promise<boolean> {
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/validate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        secret: process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY,
+        response: token,
+      }),
+    })
+
+    const data = await response.json()
+    return data.success
+  } catch (error) {
+    console.error('Turnstile verification error:', error)
+    return false
+  }
+}
+
 export async function sendContactForm(formData: FormData) {
   const company = formData.get('company') as string
   const name = formData.get('name') as string
   const email = formData.get('email') as string
   const phone = formData.get('phone') as string
   const message = formData.get('message') as string
+  const turnstileToken = formData.get('turnstileToken') as string
 
   // Validatie
   if (!name || !email || !message || !company) {
     throw new Error('Alle verplichte velden moeten ingevuld zijn')
+  }
+
+  if (!turnstileToken) {
+    throw new Error('Turnstile verificatie is vereist')
+  }
+
+  // Verify Turnstile token
+  const isValidToken = await verifyTurnstileToken(turnstileToken)
+  if (!isValidToken) {
+    throw new Error('Turnstile verificatie mislukt. Probeer het opnieuw.')
   }
 
   try {

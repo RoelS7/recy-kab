@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { LanguageProvider } from '@/lib/i18n/context'
@@ -43,6 +44,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nl" className={`${inter.variable} bg-background`}>
+      <head>
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          async
+          defer
+        />
+      </head>
       <body className="font-sans antialiased">
         <LanguageProvider>
           {children}
